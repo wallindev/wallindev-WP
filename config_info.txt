@@ -1,0 +1,20 @@
+Wordpress Info
+========================
+
+DB
+---------------------
+Host: localhost:3306
+DB: WP_wallindev
+User: wallindev
+Pass: 5eK!gl26
+
+Site
+---------------------
+Title: Wallindev
+Username: wallin
+Password: u2!x@fa5&8!&mJ)z&t
+
+E-mail
+---------------------
+Name: wp@wallindev.se / wp@wallinorg.se
+Pass: Wallindev_2018

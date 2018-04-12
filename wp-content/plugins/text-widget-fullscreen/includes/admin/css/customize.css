@@ -1,0 +1,3 @@
+body.mce-fullscreen #customize-header-actions {
+	z-index: -1;
+}

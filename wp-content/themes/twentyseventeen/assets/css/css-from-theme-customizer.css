@@ -1,0 +1,120 @@
+@media screen and (min-width: 30em) {
+  .page-one-column .panel-content .wrap {
+    max-width: 1000px;
+  }
+}
+
+.page.page-one-column:not(.twentyseventeen-front-page) #primary {
+  max-width: 1000px;
+}
+
+.site-header .custom-header {
+  /*background-color: #2e353e;*/
+  background-color: #161616;
+  /*margin-bottom: 72px;*/
+}
+
+.site-header .site-title {
+  font-weight: 600;
+}
+
+.site-header .custom-header-media:before {
+  /*display: none;*/
+}
+
+.twentyseventeen-front-page.has-header-image .site-header .site-branding {
+  padding: 2em 0;
+}
+
+/*.has-header-image:not(.twentyseventeen-front-page):not(.home) .site-header .site-branding {
+  padding: 3em 0;
+}*/
+
+.site-header .site-branding .custom-logo-link {
+  padding-right: .5em;
+}
+
+.site-header .site-branding .custom-logo-link .custom-logo {
+  vertical-align:middle;
+  position: relative;
+  bottom: 1px;
+}
+
+.site-content {
+  /*background-color: #161616;*/
+}
+
+.main-navigation .menu-scroll-down {
+  display: none;
+}
+
+@media screen and (min-width: 48em) {
+  .page.page-one-column .entry-header,
+  .twentyseventeen-front-page.page-one-column .entry-header,
+  .archive.page-one-column:not(.has-sidebar) .page-header {
+    margin-bottom: 2em;
+  }
+}
+
+.site-footer {
+  margin-top: 0;
+}
+
+.site-footer .widget-area {
+  /*padding-bottom: 0;*/
+}
+
+.site-footer .site-info {
+  background-color: #161616;
+  border-top: 1px solid #333;
+  float: none;
+  margin-bottom: 0;
+  padding-bottom: 3em;
+  padding-top: 2em;
+  width: 100%;
+  text-align: center;
+}
+
+.site-footer .widget_text {
+  /*padding-bottom: 0;*/
+}
+
+.site-footer .widget_text .textwidget {
+  /*display: table;
+  min-height: 175px;*/
+  text-align: justify;
+}
+
+.site-footer .widget_text .textwidget .contacts {
+  /*display: table-cell;
+  vertical-align: middle;*/
+}
+
+.site-footer .widget_text .textwidget .contacts img,
+.site-footer .widget_text .textwidget .contacts svg {
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+}
+
+.site-footer .widget_text .textwidget .contacts a,
+.site-footer .widget_text .textwidget .contacts a:hover,
+.site-footer .widget_text .textwidget .contacts a:focus,
+.site-footer .widget_text .textwidget .contacts a:active,
+.site-footer .widget_text .textwidget .contacts a:visited {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-footer .site-info a,
+.site-footer .site-info a:hover,
+.site-footer .site-info a:focus,
+.site-footer .site-info a:active,
+.site-footer .site-info a:visited {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 600;
+  text-decoration: none;
+}

@@ -1,0 +1,81 @@
+body,
+td,
+p {
+  color: #ccc;
+  font-size: 16px;
+}
+
+a,
+a:visited {
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #eee;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/*
+ * Fonts
+ */
+@font-face {
+	font-family: 'SourceCodePro-Regular';
+	src: url('../font/source-code-pro/Roman/Regular/SourceCodePro-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'SourceCodePro-Bold';
+	src: url('../font/source-code-pro/Roman/Bold/SourceCodePro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'SourceSansPro-Regular';
+	src: url('../font/source-sans-pro/SourceSansPro-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'SourceSansPro-Bold';
+	src: url('../font/source-sans-pro/SourceSansPro-Bold.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'SourceSerifPro-Regular';
+	src: url('../font/source-serif-pro/SourceSerifPro-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'SourceSerifPro-Bold';
+	src: url('../font/source-serif-pro/SourceSerifPro-Bold.otf') format('opentype');
+}
+
+.fontSourceCodeProRegular {
+	font: 16px/16px 'SourceCodePro-Regular';
+}
+.fontSourceCodeProBold {
+	font: 16px/16px 'SourceCodePro-Bold';
+}
+
+.fontSourceSansProRegular {
+	font: 16px/16px 'SourceSansPro-Regular';
+}
+.fontSourceSansProBold {
+	font: 16px/16px 'SourceSansPro-Bold';
+}
+
+.fontSourceSerifProRegular {
+	font: 16px/16px 'SourceSerifPro-Regular';
+}
+.fontSourceSerifProBold {
+	font: 16px/16px 'SourceSerifPro-Bold';
+}
+
+/*
+ * Formatting
+ */
+#businessCard {
+	margin: 0 0 5px 0;
+}

@@ -1,0 +1,15 @@
+body.mce-fullscreen #wpadminbar {
+	z-index: -1;
+}
+
+body.mce-fullscreen #adminmenuwrap {
+	z-index: -1;
+}
+
+body.mce-fullscreen #widgets-right .wp-editor-tools {
+	z-index: auto;
+}
+
+body.mce-fullscreen #widgets-right .widget_text {
+	z-index: auto !important;
+}
