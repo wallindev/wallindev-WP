@@ -1,6 +1,5 @@
-'use strict';
 // Document loaded
-jQuery(document).ready($ => {
+jQuery(document).ready(function($) {
   // Remove inline styling on sub-menu so that fading works
   $('.menu-item-has-children .sub-menu').removeAttr('style');
 
@@ -38,18 +37,26 @@ jQuery(document).ready($ => {
 });
 
 // Window loaded
-jQuery(window).ready($ => {
+jQuery(window).load(function() {
+  var $jQ = jQuery.noConflict();
+
   // Set same heights on thumbs
-  const setThumbHeights = () => {
-    $('.ftg-items > .tile').removeAttr('style');
+  var setThumbHeights = function() {
+    $jQ('.ftg-items > .tile').removeAttr('style');
 
     if (window && window.innerWidth < 768) return; 
 
     let maxHeight = 0;
-    $('.ftg-items > .tile').each((index, item) => maxHeight = $(item)[0].clientHeight > maxHeight ? $(item)[0].clientHeight : maxHeight);
-    $('.ftg-items > .tile').each((index, item) => $(item).height(maxHeight));
+    $jQ('.ftg-items > .tile').each((index, item) => maxHeight = $jQ(item)[0].clientHeight > maxHeight ? $jQ(item)[0].clientHeight : maxHeight);
+    $jQ('.ftg-items > .tile').each((index, item) => $jQ(item).height(maxHeight));
   };
   setThumbHeights();
 
   window.addEventListener("resize", setThumbHeights);
+
+  /* Contact me form */
+  // Set submit-button to disabled from start
+  // TODO: If you fill out the form with Chrome's autofill function,
+  // the submit button doesn't get enabled, only when you type in info
+  // $jQ('.contact-send-message').prop('disabled', true);
 });
