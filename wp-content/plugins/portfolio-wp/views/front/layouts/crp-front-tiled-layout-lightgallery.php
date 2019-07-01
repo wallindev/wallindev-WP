@@ -341,8 +341,8 @@ $gridType =  isset($crp_portfolio->extoptions['type']) ? $crp_portfolio->extopti
                 } else {
                     var href = $("#crp-light-gallery li").eq(index).attr('data-url');
                 }
-                // TODO: Must contain (include) 'http'
-                if(href && href.includes('http')) {
+                // TODO: Must contain (include) '//'
+                if(href && href.includes('//')) {
                     crp_loadHref(href,true);
                 }else {
                     return false;
