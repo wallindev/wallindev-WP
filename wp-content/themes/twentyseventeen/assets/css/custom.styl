@@ -1,8 +1,641 @@
+/* Mixins */
+// Crop space above first line that comes from line-height
+lhCrop(lineHeight)
+  &::before
+    content ''
+    display block
+    height 0
+    width 0
+    margin-top "calc((1 - %s) * 0.5em)" % lineHeight
+
+/* Variables */
+body-text-color = #ddd
+input-color = #ccc
+input-background = #222
+input-focus-background = #3c3c3c
+input-border = #3c3c3c
+input-focus-border = #555
+
+/* Reset som elements */
+/**::before,
+*::after,
+*:before,
+*:after
+  display none*/
+
+/* Main Site Styles */
+body
+  &.colors-dark
+    color body-text-color
+
+/*.colors-dark
+  &.twentyseventeen-front-page
+    .panel-content
+      .recent-posts
+        article
+          color body-text-color
+
+.colors-dark
+  button
+  input
+  select
+  textarea
+  h3
+  h4
+  h6
+  label
+  .entry-title a
+  .entry-footer .cat-links a
+  .entry-footer .tags-links a
+  .format-quote blockquote
+  .nav-title
+  .comment-body
+    color body-text-color */
+
+.site
+  .skip-link
+    display none
+
+  // Site Header
+  .site-header
+    .custom-header
+      background-color #161616
+
+      .site-branding
+        .custom-logo-link
+          padding-right .5em
+
+          .custom-logo
+            vertical-align middle
+            position relative
+            bottom 1px
+
+        .unsplash-badge
+          display block
+          position fixed
+          right 10px
+          top calc(100vh - 107px)
+
+          a,
+          a:visited
+            background-color black
+            opacity .2
+            color white
+            text-decoration none
+            padding 4px 6px
+            font-family "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif
+            font-size 12px
+            font-weight bold
+            line-height 1.2
+            display inline-block
+            border-radius 3px
+
+            span
+              display inline-block
+              padding 2px 3px
+
+              svg
+                height 12px
+                width auto
+                position relative
+                vertical-align middle
+                top -1px
+                fill white
+
+          a:hover,
+          a:focus,
+          a:active
+            opacity .3
+
+    .custom-header-media::before
+      background linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, .3) 75%,
+        rgba(0, 0, 0, .3) 100%
+      )
+
+    .navigation-top
+      z-index 4
+
+      .main-navigation
+        .menu-toggle
+          font-size 1em
+
+        // Down-arrow to the right of the menu
+        .menu-scroll-down
+          // display none
+
+        .menu
+          .menu-item-has-children
+            cursor pointer
+
+            &::before
+              display inline-block
+              content ""
+              height 12px
+              width 12px
+              position absolute
+              bottom 0
+              right 1em
+              border-color transparent transparent #333 transparent
+              border-style solid
+              border-width 6px 6px 6px 6px
+              margin 0
+              padding 0
+              opacity 0
+              transition opacity 0.5s linear
+              z-index 100000
+
+            &::after
+              display none
+
+            .sub-menu
+              visibility hidden
+              left 0.5em
+              opacity 0
+              transition visibility .5s linear, opacity 0.5s linear
+
+            &:hover
+              &::before
+                opacity 1
+                transition-delay 0s
+
+              &::after
+                display none
+
+              .sub-menu
+                visibility visible
+                opacity 1
+                top 100%
+
+    .site-title
+      font-weight 600
+
+  // Site Content
+  .site-content-contain
+    z-index 3
+
+    .site-content,
+    #content.site-content
+      padding 2em 0 3em
+
+      .entry-content
+        .text-image,
+        .text-link,
+        .text-link:visited
+          box-shadow none
+          outline none
+          transition opacity .2s linear
+
+        .text-link:hover,
+        .text-link:focus,
+        .text-link:active
+          opacity .7
+
+        .content-column.column-left
+          float left
+          width 58%
+
+          .contacts-about
+            overflow hidden
+
+            div
+              cursor pointer
+              display block
+
+              div
+                display inline-block
+
+            .mail,
+            .phone,
+            .linkedin
+              margin 3px 0 10px
+              overflow hidden
+
+              &:hover,
+              &.hover
+                .mail--url,
+                .phone--url,
+                .linkedin--url
+                  opacity 1
+                  transform translateX(210px)
+
+            .mail--icon,
+            .phone--icon,
+            .linkedin--icon
+              clear left
+              float left
+
+            .mail--url-wrapper
+            .phone--url-wrapper
+            .linkedin--url-wrapper
+              float left
+              margin-left 5px
+              overflow hidden
+              padding 5px 0
+
+            .mail--url
+            .phone--url
+            .linkedin--url
+              left -210px
+              opacity 0
+              position relative
+              transition transform .5s linear, opacity .5s linear
+
+            a,
+            a:hover,
+            a:focus,
+            a:active,
+            a:visited
+              box-shadow none
+              font-weight 600
+              outline none
+              text-decoration none
+
+            img,
+            svg
+              vertical-align middle
+              height 32px
+              width 32px
+
+        .content-column.column-right
+          float right
+          width 36%
+
+        .content-image
+          object-fit cover
+          // width 368px
+          height 600px
+          border-radius 5px
+          // box-shadow 5px 5px 2px 1px rgba(34, 34, 34, .9)
+
+        p
+          margin 0 0 1em
+          text-align justify
+
+        table
+          margin 0
+
+        tr
+          border-bottom none
+
+          td
+            // border-bottom 1px solid #333
+            // border-top 1px solid #333
+            padding 0
+
+            .crp-wrapper
+              #gallery
+                div
+                  margin-left initial
+                  margin-right initial
+                  padding-left initial
+                  padding-right initial
+
+                .ftg-items
+                  overflow hidden
+                  padding 5px 0
+
+                  .tile
+                    float left
+                    font-size 1em
+                    height 100%
+                    width calc(100% - 10px)
+                    margin 0 0 25px 5px
+                    box-shadow: 0 0 1px 5px #222
+                    transition transform .2s linear, box-shadow .2s linear
+
+                    @media screen and (min-width 20em) // 320px (at 16px base pixel size)
+                      font-size 1.1em
+
+                    @media screen and (min-width 30em) // 480px (at 16px base pixel size)
+                      font-size .95em
+
+                    @media screen and (min-width 48em) // 768px (at 16px base pixel size)
+                      font-size 1.1em
+                      width calc(50% - 18px)
+                      &:nth-child(even)
+                        margin-left 25px
+
+                    @media screen and (min-width 67em) // 1072px (at 16px base pixel size)
+                      font-size 1em
+                      width calc(33.3% - 20px)
+                      &:nth-child(3n-2) // 1,4,7
+                        margin-left 5px
+                      &:not(:nth-child(3n-2)) // 2,3,5,6 (not 1,4,7)
+                        margin-left 25px
+
+                    /*@media screen and (min-width 79em) // 1264px (at 16px base pixel size)
+                      font-size .9em
+                      width calc(25% - 15px)*/
+
+                    &:hover,
+                    &.hover
+                      cursor pointer
+                      box-shadow 0 10px 1px 5px rgba(34, 34, 34, .7)
+                      transform scale(1.02) translateY(-4px)
+
+                      .caption
+                        opacity 1
+
+                    .crp-tile-inner
+                      position initial
+                      left initial
+                      top initial
+                      width initial
+                      height 100%
+                      overflow initial
+
+                      *
+                        position initial
+
+                      .tile-inner
+                        display block
+                        height 100%
+                        padding 5px 5px 30px
+                        position relative
+
+                        .title
+                          font-weight 600
+                          padding 0 0 10px
+
+                        .crp-item
+                          border-radius 5px
+                          box-shadow none
+
+                        .description
+                          font-size .9em
+                          margin-bottom 5px
+                          padding 10px 0 0
+
+                        .url
+                          bottom 5px
+                          font-size .8em
+                          position absolute
+
+                        .caption
+                          position absolute
+
+  // Site Footer
+  .site-footer
+    margin-top 0
+
+    .site-info
+      background-color #161616
+      border-top 1px solid #333
+      float none
+      margin-bottom 0
+      padding-bottom 3em
+      padding-top 2em
+      width 100%
+      text-align center
+
+      a,
+      a:hover,
+      a:focus,
+      a:active,
+      a:visited
+        box-shadow none
+        font-weight 600
+        text-decoration none
+
+    .widget-area
+      padding-bottom 1em
+
+    .widget_text
+      padding-bottom 0
+
+      .textwidget
+        text-align justify
+
+        .contact-form
+          .nf-form-cont
+
+            .nf-response-msg
+              p
+                margin 0
+                font-size 0.9em
+                font-weight 600
+                text-align left
+
+            .nf-before-form-content
+              display none
+
+            .nf-form-content
+              padding 0
+
+              .nf-field-container
+                margin-bottom 5px
+
+                .nf-before-field
+                  display none
+
+                .nf-field
+                  .nf-error
+                    .ninja-forms-field,
+                    .nf-element
+                      border-color input-border !important
+                      &:focus
+                        border-color input-focus-border !important
+
+                  .nf-pass
+                    .ninja-forms-field,
+                    .nf-element
+                      border-color input-focus-background !important
+                      &:focus
+                        background input-focus-background !important
+                        border-color input-focus-border !important
+
+                  .nf-field-label
+                    display none
+
+                  .nf-field-element
+                    &::after
+                      display none
+
+                    .ninja-forms-field,
+                    .nf-element
+                      color input-color
+                      font-size 1em
+                      padding 4px 8px
+                      &:focus
+                        background input-focus-background !important
+                        border-color input-focus-border !important
+
+                    input:not([type=button])
+                      color input-color
+                      height initial
+                      &:focus
+                        background input-focus-background !important
+                        border-color input-focus-border !important
+
+                    textarea
+                      color input-color
+                      height 63px
+                      &:focus
+                        background input-focus-background !important
+                        border-color input-focus-border !important
+
+                    button,
+                    input[type=button],
+                    input[type=submit] {
+                      background input-focus-background
+                      // color input-color
+                      float right
+                      font-weight 600
+                      height initial
+                      padding 8px
+                    }
+                    button:hover,
+                    input[type=button]:hover,
+                    input[type=submit]:hover {
+                      background #4c4c4c
+                      // color input-color
+                    }
+                    button[disabled],
+                    input[type=button][disabled],
+                    input[type=submit][disabled] {
+                      // color input-color
+                      cursor default
+                    }
+                    button[disabled]:hover,
+                    input[type=button][disabled]:hover,
+                    input[type=submit][disabled]:hover {
+                      background input-focus-background
+                      // color input-color
+                    }
+
+                    /*
+                     * Hack for overriding Chrome user agent autofill
+                     * Left the 'previewed' as-is so the user still sees the autofill mechanism,
+                     * but after user selects suggested value the style reverts to "normal"
+                     */
+                    // input:-internal-autofill-previewed,
+                    input:-internal-autofill-selected,
+                    // textarea:-internal-autofill-previewed,
+                    textarea:-internal-autofill-selected,
+                    // select:-internal-autofill-previewed,
+                    select:-internal-autofill-selected,
+                    /* input:-webkit-autofill,
+                    input:-webkit-autofill:hover, 
+                    input:-webkit-autofill:focus,
+                    textarea:-webkit-autofill,
+                    textarea:-webkit-autofill:hover,
+                    textarea:-webkit-autofill:focus,
+                    select:-webkit-autofill,
+                    select:-webkit-autofill:hover,
+                    select:-webkit-autofill:focus */
+                      -webkit-text-fill-color input-color
+                      -webkit-box-shadow 0 0 0px 1000px input-background inset
+                      // transition background-color 5000s ease-in-out 0s
+                      background-color input-background !important
+                      // background-image none !important
+                      color input-color !important
+
+                .nf-after-field
+                  display none
+
+            .nf-after-form-content
+              display none
+
+        .contacts-footer
+          display none
+          overflow hidden
+
+          div
+            cursor pointer
+            display block
+
+            div
+              display inline-block
+
+          .mail,
+          .phone,
+          .linkedin
+            margin 3px 0 10px
+            overflow hidden
+
+            &:hover,
+            &.hover
+              .mail--url,
+              .phone--url,
+              .linkedin--url
+                opacity 1
+                transform translateX(210px)
+
+          .mail--icon,
+          .phone--icon,
+          .linkedin--icon
+            clear left
+            float left
+
+          .mail--url-wrapper
+          .phone--url-wrapper
+          .linkedin--url-wrapper
+            float left
+            margin-left 5px
+            overflow hidden
+            padding 5px 0
+
+          .mail--url
+          .phone--url
+          .linkedin--url
+            left -210px
+            opacity 0
+            position relative
+            transition transform .5s linear, opacity .5s linear
+
+          a,
+          a:hover,
+          a:focus,
+          a:active,
+          a:visited
+            box-shadow none
+            font-weight 600
+            outline none
+            text-decoration none
+
+          img,
+          svg
+            vertical-align middle
+            height 32px
+            width 32px
+
+        .about-work
+          lhCrop(1.6)
+
+/* Special Styling */
+@media screen and (max-width 20em)
+  body
+    #wpadminbar
+      min-width initial
+      width 100%
+
 @media screen and (min-width 30em)
   .page-one-column
     .panel-content
       .wrap
         max-width 1000px
+
+@media screen and (min-width: 48em)
+  .page-one-column
+    .panel-content
+      .wrap
+        padding-bottom 2em
+        padding-top 3.5em
+
+// TODO: Optimize?
+@media screen and (min-width 48em)
+  .page.page-one-column,
+  .twentyseventeen-front-page.page-one-column
+    .entry-header
+      margin-bottom 0
+      padding 0
+
+  .archive.page-one-column:not(.has-sidebar),
+    .page-header
+      margin-bottom 2em
 
 .page.page-one-column:not(.twentyseventeen-front-page)
   .site-header
@@ -16,120 +649,23 @@
 
     .entry-header
       .entry-title
-        font-size 32px
+        font-size 24px
         font-weight 600
-        text-align center
-        text-transform capitalize
+        margin-bottom 0.5em
+        // text-align center
+        // text-transform capitalize // Override standard uppercase styling
 
-
-.site-header
-  .custom-header
-    /*background-color #2e353e*/
-    background-color #161616
-    /*margin-bottom 72px*/
-
-    .site-branding
-      .custom-logo-link
-        padding-right .5em
-
-        .custom-logo
-          vertical-align middle
-          position relative
-          bottom 1px
-
-      .unsplash-badge
-        display block
-        position fixed
-        // bottom 82px
-        right 10px
-        top calc(100vh - 107px)
-
-        a,
-        a:visited
-          background-color black
-          opacity .2
-          color white
-          text-decoration none
-          padding 4px 6px
-          font-family "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif
-          font-size 12px
-          font-weight bold
-          line-height 1.2
-          display inline-block
-          border-radius 3px
-
-          span
-            display inline-block
-            padding 2px 3px
-
-            svg
-              height 12px
-              width auto
-              position relative
-              vertical-align middle
-              top -1px
-              fill white
-
-        a:hover,
-        a:focus,
-        a:active
-          opacity .3
-
-  .custom-header-media:before
-    /*display none*/
-
-  .navigation-top
-    z-index 4
-    
-    .main-navigation
-      .menu-toggle
-        font-size 1em
-
-      .menu-scroll-down
-        display none
-
-      .menu
-
-        .menu-item-has-children
-          cursor pointer
-
-          &::before,
-          &::after
-            display block
-            opacity 0
-            transition opacity 0.5s linear
-
-          .sub-menu
-            visibility hidden
-            left 0.5em
-            opacity 0
-            // top -999px
-            transition visibility 1s linear 0.5s, opacity 0.5s linear
-
-          &:hover
-
-            &::before,
-            &::after
-              opacity 1
-              transition-delay 0s
-
-            .sub-menu
-              visibility visible
-              opacity 1
-              // top 100%
-              // transition top 1s linear 0.5s
-              transition-delay 0s
-
-  .site-title
-    font-weight 600
-
-/* Front Page */
+// Front Page
 .twentyseventeen-front-page.has-header-image
   .site-header
     .site-branding
       padding 2em 0
 
-/* All other pages (not Front Page) */
+  .entry-header
+    .entry-title
+      margin-bottom 2em
+
+// All other pages (not Front Page)
 .has-header-image:not(.twentyseventeen-front-page):not(.home)
   .site-header
     .site-branding
@@ -138,283 +674,54 @@
   .site-content
     .wrap
       padding 0 40px
-      // padding-left 2.8em
-      // padding-right 2.8em
 
-.site-content-contain
-  z-index 3
+/* Portfolio Gallery Images */
+#lg-outer
+  #lg-gallery
+    #lg-close
+      right 20px
+      top 20px
 
-  .site-content
-    // background-color #161616
+      .cl-icon
+        position absolute
+        top 6px
 
-    /*.entry-header
-      .entry-title
-        text-align center*/
-    
-    .entry-content
-      tr
-        border-bottom none
+    #lg-action
+      &.has-thumb
+        margin-left -123px
 
-        td
-          border-bottom 1px solid #333
-          border-top 1px solid #333
-          padding 1em 0
-          // border-top-color rgba(238,238,238,.3)
-
-          .crp-wrapper
-            #gallery
-              div
-                margin-left initial
-                margin-right initial
-                padding-left initial
-                padding-right initial
-
-              .ftg-items
-                // height 400px
-                overflow hidden
-                padding 20px 0
-
-                .tile
-                  float left
-                  font-size 1em
-                  height 100%
-                  // height 238px
-                  width calc(100% - 10px)
-                  margin 0 0 25px 5px
-                  box-shadow: 0 0 1px 5px #222;
-                  transition transform .2s linear, box-shadow .2s linear
-
-                  @media screen and (min-width 20em) // 320px (at 16px base pixel size)
-                    font-size 1.1em
-
-                  @media screen and (min-width 30em) // 480px (at 16px base pixel size)
-                    font-size .95em
-
-                  @media screen and (min-width 48em) // 768px (at 16px base pixel size)
-                    font-size 1.1em
-                    width calc(50% - 18px)
-                    &:nth-child(even)
-                      margin-left 25px
-
-                  @media screen and (min-width 67em) // 1072px (at 16px base pixel size)
-                    font-size 1em
-                    width calc(33.3% - 20px)
-                    &:nth-child(3n-2) // 1,4,7
-                      margin-left 5px
-                    &:not(:nth-child(3n-2)) // 2,3,5,6 (not 1,4,7)
-                      margin-left 25px
-
-                  /*@media screen and (min-width 79em) // 1264px (at 16px base pixel size)
-                    font-size .9em
-                    width calc(25% - 15px)*/
-
-                  &:hover,
-                  &.hover
-                    cursor pointer
-                    box-shadow 0 10px 1px 5px rgba(34, 34, 34, .7)
-                    transform translateY(-4px)
-                    
-                    .caption
-                      opacity 1
-
-                  .crp-tile-inner
-                    position initial
-                    left initial
-                    top initial
-                    width initial
-                    height 100%
-                    overflow initial
-
-                    *
-                      position initial
-
-                    .tile-inner
-                      display block
-                      height 100%
-                      padding 5px 5px 30px
-                      position relative
-
-                      .title
-                        font-weight 600
-                        padding 0 0 10px
-
-                      .crp-item
-                        box-shadow none
-
-                      .description
-                        font-size .9em
-                        margin-bottom 5px
-                        padding 10px 0 0
-
-                      .url
-                        bottom 5px
-                        font-size .8em
-                        position absolute
-
-                      .caption
-                        position absolute
-
-// TODO: Optimize?
-@media screen and (min-width 48em)
-  .page.page-one-column
-  .twentyseventeen-front-page.page-one-column
-    .entry-header
-      margin-bottom 2em
-  .archive.page-one-column:not(.has-sidebar)
-    .page-header
-      margin-bottom 2em
-  
-.site-footer
-  margin-top 0
-
-  .site-info
-    background-color #161616
-    border-top 1px solid #333
-    float none
-    margin-bottom 0
-    padding-bottom 3em
-    padding-top 2em
-    width 100%
-    text-align center
-
-    a,
-    a:hover,
-    a:focus,
-    a:active,
-    a:visited
-      box-shadow none
-      font-weight 600
-      text-decoration none
-  
-
-  .widget-area
-    /*padding-bottom 0*/
-
-  .widget_text
-    /*padding-bottom 0*/
-
-    .textwidget
-      /*display table
-      min-height 175px*/
-      text-align justify
-
-      .contacts
-        /*display table-cell
-        vertical-align middle*/
-        overflow hidden
-
-        div
-          cursor pointer
-          display block
-
-          div
-            display inline-block
-
-        .mail,
-        .phone,
-        .linkedin
-          margin 3px 0 10px
-          overflow hidden
-
-          &:hover,
-          &.hover
-            .mail--url,
-            .phone--url,
-            .linkedin--url
-              opacity 1
-              transform translateX(210px)
-
-        .mail--icon,
-        .phone--icon,
-        .linkedin--icon
-          clear left
-          float left
-
-        .mail--url-wrapper
-        .phone--url-wrapper
-        .linkedin--url-wrapper
-          float left
-          margin-left 5px
-          overflow hidden
-          padding 5px 0
-
-        .mail--url
-        .phone--url
-        .linkedin--url
-          left -210px
-          opacity 0
-          position relative
-          transition transform .5s linear, opacity .5s linear
-
-        a,
-        a:hover,
-        a:focus,
-        a:active,
-        a:visited
-          box-shadow none
-          font-weight 600
-          outline none
-          text-decoration none
-
-        img,
-        svg
-          vertical-align middle
-          height 32px
-          width 32px
-
-#lg-gallery
-
-  #lg-close
-    right 20px
-    top 20px
-
-    .cl-icon
-      position absolute
-      top 6px
-
-  #lg-action
-    
-    &.has-thumb
-      margin-left -123px
-
-    a
-      font-size 28px
-      width 46px
-      height 50px
-      @media screen and (min-width 48em) // 768px (at 16px base pixel size)
-        height 46px
-
-      &.cl-external.no-url,
-      &.cl-external.no-url:active,
-      &.cl-external.no-url:hover,
-      &.cl-external.no-url:focus,
-      &.cl-external.no-url:visited
-        background-color rgba(0, 0, 0, .65)
-        opacity .3
-        cursor default
-
-  .thumb-cont
-    .cl-icon
-      position absolute
-      top 7px
-
-  .lg-info
-    left 20px
-    top 20px
-
-    p:first-of-type
-      font-size .9em
-      margin-bottom 7px
-    
-    p:last-of-type
-      margin-bottom 1px
-      
       a
-        font-weight 600
+        font-size 28px
+        width 46px
+        height 50px
+        @media screen and (min-width 48em) // 768px (at 16px base pixel size)
+          height 46px
 
-@media screen and (max-width 20em)
-  body
-    #wpadminbar
-      min-width initial
-      width 100%
-    
+        &.cl-external.no-url,
+        &.cl-external.no-url:active,
+        &.cl-external.no-url:hover,
+        &.cl-external.no-url:focus,
+        &.cl-external.no-url:visited
+          background-color rgba(0, 0, 0, .65)
+          opacity .3
+          cursor default
+
+    .thumb-cont
+      .cl-icon
+        position absolute
+        top 7px
+
+    .lg-info
+      background-color rgba(0,0,0,.7)
+      left 20px
+      top 20px
+
+      p:first-of-type
+        font-size .9em
+        margin-bottom 7px
+
+      p:last-of-type
+        margin-bottom 1px
+
+        a
+          font-weight 600
