@@ -22,4 +22,4 @@ function twentyseventeen_include_custom_css() {
     echo $custom_css_file_code . "\n";
   }
 }
-add_action( 'wp_footer', 'twentyseventeen_include_custom_css', 9999 );
+add_action( 'wp_footer', 'twentyseventeen_include_custom_css', 999999 );

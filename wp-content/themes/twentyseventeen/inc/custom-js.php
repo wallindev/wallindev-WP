@@ -21,5 +21,6 @@ function twentyseventeen_include_custom_js() {
 
     echo $custom_js_file_code . "\n";
   }
+
 }
-add_action( 'wp_footer', 'twentyseventeen_include_custom_js', 9999 );
+add_action( 'wp_footer', 'twentyseventeen_include_custom_js', 999999 );
