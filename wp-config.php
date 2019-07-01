@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * The base configuration for WordPress
  *
@@ -17,16 +17,18 @@
  *
  * @package WordPress
  */
+// Are we on local or live/remote site?
+define('IS_LOCAL', strpos('wallindev.se', $_SERVER["HTTP_HOST"]) === false);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wp_wallindev');
+define('DB_NAME', IS_LOCAL ? 'wp_wallindev' : 'wp_wallindev_migr');
 
 /** MySQL database username */
-define('DB_USER', 'admin');
+define('DB_USER', IS_LOCAL ? 'admin' : 'wallin_migr');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'grunge');
+define('DB_PASSWORD', IS_LOCAL ? 'grunge' : 'Grunge_2018');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost:3306');
@@ -77,7 +79,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', IS_LOCAL ? true : false);
 
 /* That's all, stop editing! Happy blogging. */
 
