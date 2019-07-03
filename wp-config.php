@@ -17,8 +17,13 @@
  *
  * @package WordPress
  */
+
 // Are we on local or live/remote site?
-define('IS_LOCAL', strpos('wallindev.se', $_SERVER["HTTP_HOST"]) === false);
+// Finds 'needle' in 'haystack'
+// strpos(haystack, needle)
+// If 'wallindev.se' is not found in HTTP_HOST ($strpos_return_value === false), we are local
+$strpos_return_value = strpos($_SERVER["HTTP_HOST"], 'wallindev.se');
+define('IS_LOCAL', $strpos_return_value === false);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
